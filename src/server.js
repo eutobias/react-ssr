@@ -1,4 +1,5 @@
 import express from "express";
+import compression from "compression";
 import path from "path";
 
 import React from "react";
@@ -12,6 +13,7 @@ import createStore, { initializeSession } from "./store";
 
 const app = express();
 
+app.use( compression() );
 app.use( express.static( path.resolve( __dirname, "../dist" ) ) );
 
 app.get( "/*", ( req, res ) => {
